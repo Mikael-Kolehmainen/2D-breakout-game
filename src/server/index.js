@@ -4,8 +4,10 @@ const express = require("express");
 const app = express();
 const router = express.Router();
 
+app.use(express.static(path.join(__dirname, "/../public")));
+
 router.get("/", (req, res) => {
-  res.sendFile(path.resolve(__dirname + "/../index.html"));
+  res.sendFile(path.resolve(__dirname + "/../../index.html"));
 });
 
 app.use("/", router);

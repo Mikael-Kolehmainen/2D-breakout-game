@@ -5,7 +5,7 @@
   "description": "A simple 2D breakout game that I made because I wanted to know how you can make games with JavaScript.",
   "main": "index.html",
   "scripts": {
-    "start": "nodemon ./src/server.js"
+    "start": "nodemon ./src/server/index.js"
   },
   "repository": {
     "type": "git",
