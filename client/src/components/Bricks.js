@@ -22,12 +22,12 @@ export default class Bricks {
   }
 
   draw() {
-    for(let c=0; c<this.columnCount; c++) {
-      for(let r=0; r<this.rowCount; r++) {
-        if(this.bricks[c][r].status === 1) {
-          const brickX = (r * (this.width + this.padding)) + this.offsetLeft;
-          const brickY = (c * (this.height + this.padding)) + this.offsetTop;
-          this.bricks[c][r] = { x: brickX, y: brickY, status: 1 };
+    for(let column = 0; column < this.columnCount; column++) {
+      for(let row = 0; row < this.rowCount; row++) {
+        if(this.bricks[column][row].status === 1) {
+          const brickX = (row * (this.width + this.padding)) + this.offsetLeft;
+          const brickY = (column * (this.height + this.padding)) + this.offsetTop;
+          this.bricks[column][row] = { x: brickX, y: brickY, status: 1 };
           this.ctx.beginPath();
           this.ctx.rect(brickX, brickY, this.width, this.height);
           this.ctx.fillStyle = "#0095DD";
