@@ -27,6 +27,9 @@ function App() {
   let paddleX = (CANVAS.width - paddleWidth) / 2;
   // SCORE
   let score = 0;
+  // CONTROLLER
+  let rightPressed = false;
+  let leftPressed = false;
 
   const draw = (ctx, frameCount) => {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
@@ -36,6 +39,7 @@ function App() {
     drawScore(ctx);
     collisionDetection();
     defineBorders();
+    paddleController();
   };
 
   const drawBricks = (ctx) => {
@@ -102,6 +106,36 @@ function App() {
       }
     }
   };
+
+  const paddleController = () => {
+    if (rightPressed && paddleX < CANVAS.width - paddleWidth) {
+      paddleX += 7;
+    }
+    else if (leftPressed && paddleX > 0) {
+      paddleX -= 7;
+    }
+  };
+
+  const keyDownHandler = (e) => {
+    if (e.key === "d") {
+      rightPressed = true;
+    }
+    else if (e.key === "a") {
+      leftPressed = true;
+    }
+  };
+
+  const keyUpHandler = (e) => {
+    if (e.key === "d") {
+      rightPressed = false;
+    }
+    else if (e.key === "a") {
+      leftPressed = false;
+    }
+  };
+
+  document.addEventListener("keydown", keyDownHandler, false);
+  document.addEventListener("keyup", keyUpHandler, false);
 
   return <Canvas draw={draw} />
 }
