@@ -9,15 +9,17 @@ import UIText from "./components/UIText";
 
 // TODO:
 // Create Brick class and use in Bricks
-// Get game to work then clean the code
+// ColumnCount and RowCount are in wrong order in Bricks class
+// Add timer which will be put to leaderboard
 // Leaderboard
   // Ability to save score with initials
   // Leaderboard is shown below game
+// Clean the code
 // Add jsdoc to code
 
 function App() {
   // BRICKS LAYOUT
-  const bricksLayout = new Bricks(3, 5, 75, 20, 10, 30, 30);
+  const bricksLayout = new Bricks(3, 9, 37.5, 20, 10, 30, 30);
   // BALL
   let ballDX = 2;
   let ballDY = 2;
@@ -40,6 +42,9 @@ function App() {
     collisionDetection();
     defineBorders();
     paddleController();
+
+    ball.x += ballDX;
+    ball.y += ballDY;
   };
 
   const drawBricks = (ctx) => {
