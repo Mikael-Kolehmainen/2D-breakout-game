@@ -4,18 +4,24 @@ import Ball from "./components/Ball";
 import Bricks from "./components/Bricks";
 import { CANVAS } from "./const";
 import "./styles/main.css";
+import Paddle from "./components/Paddle";
 
 // TODO:
 // Create Brick class and use in Bricks
+// Make classes global to replace global variables
 
 function App() {
-  const x = CANVAS.width / 2;
-  const y = CANVAS.height - 30;
+  const ballX = CANVAS.width / 2;
+  const ballY = CANVAS.height - 30;
+  const paddleWidth = 75;
+  const paddleX = (CANVAS.width - paddleWidth) / 2;
+
 
   const draw = (ctx, frameCount) => {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     drawBricks(ctx);
     drawBall(ctx);
+    drawPaddle(ctx);
   };
 
   const drawBricks = (ctx) => {
@@ -24,8 +30,13 @@ function App() {
   };
 
   const drawBall = (ctx) => {
-    const ball = new Ball(ctx, x, y, 10);
+    const ball = new Ball(ctx, ballX, ballY, 10);
     ball.draw();
+  };
+
+  const drawPaddle = (ctx) => {
+    const paddle = new Paddle(ctx, );
+    paddle.draw();
   };
 
   return <Canvas draw={draw} />
