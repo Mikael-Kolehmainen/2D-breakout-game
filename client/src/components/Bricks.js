@@ -1,6 +1,6 @@
 export default class Bricks {
-  constructor(ctx, columnCount, rowCount, width, height, padding, offsetLeft, offsetTop) {
-    this.ctx = ctx;
+  constructor(columnCount, rowCount, width, height, padding, offsetLeft, offsetTop) {
+    this.ctx = null;
     this.columnCount = columnCount;
     this.rowCount = rowCount;
     this.width = width;
