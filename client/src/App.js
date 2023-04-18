@@ -19,13 +19,12 @@ function App() {
   // BRICKS LAYOUT
   const bricksLayout = new Bricks(3, 5, 75, 20, 10, 30, 30);
   // BALL
-  const ballX = CANVAS.width / 2;
-  const ballY = CANVAS.height - 30;
-  const ballDX = 2;
+  let ballDX = 2;
   let ballDY = 2;
+  const ball = new Ball(CANVAS.width / 2, CANVAS.height - 30, 10);
   // PADDLE
   const paddleWidth = 75;
-  const paddleX = (CANVAS.width - paddleWidth) / 2;
+  let paddleX = (CANVAS.width - paddleWidth) / 2;
   // SCORE
   let score = 0;
 
@@ -36,6 +35,7 @@ function App() {
     drawPaddle(ctx);
     drawScore(ctx);
     collisionDetection();
+    defineBorders();
   };
 
   const drawBricks = (ctx) => {
@@ -44,7 +44,7 @@ function App() {
   };
 
   const drawBall = (ctx) => {
-    const ball = new Ball(ctx, ballX, ballY, 10);
+    ball.ctx = ctx;
     ball.draw();
   };
 
@@ -63,8 +63,8 @@ function App() {
       for(let row = 0; row < bricksLayout.rowCount; row++) {
         let brick = bricksLayout.bricks[column][row];
         if(brick.status === 1) {
-          if(ballX > brick.x && ballX < brick.x + bricksLayout.width
-            && ballY > brick.y && ballY < brick.y + bricksLayout.height) {
+          if(ball.x > brick.x && ball.x < brick.x + bricksLayout.width
+            && ball.y > brick.y && ball.y < brick.y + bricksLayout.height) {
             ballDY = -ballDY;
             brick.status = 0;
             score++;
@@ -76,7 +76,32 @@ function App() {
         }
       }
     }
-  }
+  };
+
+  const defineBorders = () => {
+    if (ball.x + ballDX > CANVAS.width - ball.radius
+      || ball.x + ballDX < ball.radius) {
+      ballDX = -ballDX;
+    }
+    if (ball.y + ballDY < ball.radius) {
+      ballDY = -ballDY;
+    }
+    else if (ball.y + ballDY > CANVAS.height - ball.radius) {
+      if(ball.x > paddleX && ball.x < paddleX + paddleWidth) {
+        ballDY = -ballDY;
+      }
+      else {
+        alert("GAME OVER");
+        document.location.reload();
+
+        ball.x = CANVAS.width / 2;
+        ball.y = CANVAS.height - 30;
+        ballDX = 3;
+        ballDY = -3;
+        paddleX = (CANVAS.width - paddleWidth) / 2;
+      }
+    }
+  };
 
   return <Canvas draw={draw} />
 }

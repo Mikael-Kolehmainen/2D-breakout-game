@@ -1,6 +1,6 @@
 export default class Ball {
-    constructor(ctx, x, y, radius) {
-        this.ctx = ctx;
+    constructor(x, y, radius) {
+        this.ctx = null;
         this.x = x;
         this.y = y;
         this.radius = radius;
