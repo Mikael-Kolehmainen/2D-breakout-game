@@ -8,8 +8,6 @@ import Paddle from "./components/Paddle";
 import UIText from "./components/UIText";
 
 // TODO:
-// Create Brick class and use in Bricks
-// ColumnCount and RowCount are in wrong order in Bricks class
 // Add timer which will be put to leaderboard
 // Leaderboard
   // Ability to save score with initials
@@ -68,9 +66,9 @@ function App() {
   };
 
   const collisionDetection = () => {
-    for(let column = 0; column < bricksLayout.columnCount; column++) {
-      for(let row = 0; row < bricksLayout.rowCount; row++) {
-        let brick = bricksLayout.bricks[column][row];
+    for(let row = 0; row < bricksLayout.rowCount; row++) {
+      for(let column = 0; column < bricksLayout.columnCount; column++) {
+        let brick = bricksLayout.bricks[row][column];
         if(brick.status === 1) {
           if(ball.x > brick.x && ball.x < brick.x + bricksLayout.width
             && ball.y > brick.y && ball.y < brick.y + bricksLayout.height) {
