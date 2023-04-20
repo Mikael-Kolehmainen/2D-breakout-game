@@ -6,18 +6,22 @@
 const Leaderboard = () => {
   const placeholderData = [
     {
+      id: 1,
       username: "Placeholder",
       time: "5s"
     },
     {
+      id: 2,
       username: "Placeholder",
       time: "10s"
     },
     {
+      id: 3,
       username: "Placeholder",
       time: "14s"
     },
     {
+      id: 4,
       username: "Placeholder",
       time: "18s"
     }
@@ -25,10 +29,11 @@ const Leaderboard = () => {
 
   return (
     <div className="leaderboard">
-      <h1>Leaderboard</h1>
+      <h2>Leaderboard</h2>
       <h3>Save result to leaderboard</h3>
       <label htmlFor="username">Username: </label>
       <input type="text" name="username" maxLength="10" required />
+      <input type="submit" value="Submit" />
       <table>
         <tbody>
           <tr>
@@ -39,7 +44,7 @@ const Leaderboard = () => {
           {
             placeholderData.map((user, index) => {
               return (
-                <tr>
+                <tr key={user.id}>
                   <td>{index}</td>
                   <td>{user.username}</td>
                   <td>{user.time}</td>

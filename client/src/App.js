@@ -9,6 +9,8 @@ import Leaderboard from "./components/Leaderboard";
 import "./styles/css/main.css";
 
 // TODO:
+// Handle Game Over and Win state some other way than by alerting
+  // Maybe a restart button?
 // Leaderboard
   // Ability to save score with initials
   // Leaderboard is shown below game
@@ -114,6 +116,7 @@ function App() {
 
   return (
     <div>
+      <h1>Breakout Game</h1>
       <Canvas draw={draw} />
       <Leaderboard />
     </div>
