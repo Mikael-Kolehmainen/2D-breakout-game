@@ -16,6 +16,7 @@ import "./styles/css/main.css";
   // Leaderboard is shown below game
 // Clean the code
 // Add jsdoc to code
+// Write readme in Github
 
 function App() {
   const bricksLayout = new Bricks(3, 9, 37.5, 20, 10, 30, 30);
