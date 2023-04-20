@@ -6,9 +6,9 @@ import { CANVAS } from "./const";
 import "./styles/main.css";
 import Paddle from "./components/Paddle";
 import UIText from "./components/UIText";
+import Leaderboard from "./components/Leaderboard";
 
 // TODO:
-// Display timer in Canvas
 // Leaderboard
   // Ability to save score with initials
   // Leaderboard is shown below game
@@ -19,9 +19,8 @@ function App() {
   const bricksLayout = new Bricks(3, 9, 37.5, 20, 10, 30, 30);
   const ball = new Ball(CANVAS.width / 2, CANVAS.height - 30, 2, 2, 10);
   const paddle = new Paddle((CANVAS.width - 75) / 2, 10, 75);
-  // SCORE
+
   let score = 0;
-  // TIME
   let startTime = new Date();
 
   const draw = (ctx, frameCount) => {
@@ -113,7 +112,12 @@ function App() {
     ball.updatePosition();
   };
 
-  return <Canvas draw={draw} />;
+  return (
+    <div>
+      <Canvas draw={draw} />
+      <Leaderboard />
+    </div>
+  );
 }
 
 export default App;
