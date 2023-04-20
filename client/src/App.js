@@ -29,7 +29,7 @@ function App() {
     drawBricks(ctx);
     drawBall(ctx);
     drawPaddle(ctx);
-    drawScore(ctx);
+    drawTimer(ctx);
 
     collisionDetection();
 
@@ -55,9 +55,13 @@ function App() {
     paddle.controller();
   };
 
-  const drawScore = (ctx) => {
-    const scoreText = new UIText(ctx, "Score: " + score, "16px Arial", "#0095DD", 8, 20);
-    scoreText.draw();
+  const drawTimer = (ctx) => {
+    const endTime = new Date();
+    const elapsedTime = endTime - startTime;
+    const elapsedTimeInSeconds = Math.floor(elapsedTime / 1000);
+
+    const timerText = new UIText(ctx, "Time: " + elapsedTimeInSeconds, "16px Arial", "#0095DD", 8, 20);
+    timerText.draw();
   };
 
   const collisionDetection = () => {
