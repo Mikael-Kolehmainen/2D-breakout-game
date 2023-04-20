@@ -1,0 +1,36 @@
+@font-face {
+  font-family: montserrat;
+  src: url(../../font/Montserrat-Regular.ttf); }
+
+.leaderboard {
+  padding-top: 25px;
+  text-align: center; }
+  .leaderboard h1 {
+    color: white;
+    background-color: #0095DD;
+    padding: 10px 0 10px 0;
+    margin-bottom: 20px; }
+  .leaderboard table {
+    margin: 35px auto 0 auto;
+    max-width: 600px;
+    border-spacing: 0; }
+    .leaderboard table tr:first-child {
+      background-color: #9fdfff; }
+    .leaderboard table tr td {
+      border: 1px solid black;
+      padding: 5px 0 5px 0;
+      margin: 0;
+      width: 200px; }
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: montserrat; }
+
+canvas {
+  background: #eee;
+  display: block;
+  margin: 0 auto; }
+
+h1, h3 {
+  text-align: center; }

@@ -3,10 +3,10 @@ import Canvas from "./components/Canvas";
 import Ball from "./components/Ball";
 import Bricks from "./components/Bricks";
 import { CANVAS } from "./const";
-import "./styles/main.css";
 import Paddle from "./components/Paddle";
 import UIText from "./components/UIText";
 import Leaderboard from "./components/Leaderboard";
+import "./styles/css/main.css";
 
 // TODO:
 // Leaderboard

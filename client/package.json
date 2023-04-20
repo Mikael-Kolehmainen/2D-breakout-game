@@ -11,11 +11,15 @@
     "react-scripts": "^5.0.1",
     "web-vitals": "^3.3.1"
   },
+  "devDependencies": {
+    "node-sass": "^8.0.0"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "sass": "node-sass -w src/styles/sass/ -o src/styles/css/ --recursive"
   },
   "eslintConfig": {
     "extends": [

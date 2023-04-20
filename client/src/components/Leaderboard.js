@@ -4,6 +4,25 @@
 */
 
 const Leaderboard = () => {
+  const placeholderData = [
+    {
+      username: "Placeholder",
+      time: "5s"
+    },
+    {
+      username: "Placeholder",
+      time: "10s"
+    },
+    {
+      username: "Placeholder",
+      time: "14s"
+    },
+    {
+      username: "Placeholder",
+      time: "18s"
+    }
+  ];
+
   return (
     <div className="leaderboard">
       <h1>Leaderboard</h1>
@@ -11,11 +30,24 @@ const Leaderboard = () => {
       <label htmlFor="username">Username: </label>
       <input type="text" name="username" maxLength="10" required />
       <table>
-        <tr>
-          <td>Placement</td>
-          <td>User</td>
-          <td>Time</td>
-        </tr>
+        <tbody>
+          <tr>
+            <td>Placement</td>
+            <td>User</td>
+            <td>Time</td>
+          </tr>
+          {
+            placeholderData.map((user, index) => {
+              return (
+                <tr>
+                  <td>{index}</td>
+                  <td>{user.username}</td>
+                  <td>{user.time}</td>
+                </tr>
+              )
+            })
+          }
+        </tbody>
       </table>
     </div>
   );
