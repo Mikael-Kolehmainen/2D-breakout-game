@@ -8,7 +8,7 @@ import Paddle from "./components/Paddle";
 import UIText from "./components/UIText";
 
 // TODO:
-// Add timer which will be put to leaderboard
+// Display timer in Canvas
 // Leaderboard
   // Ability to save score with initials
   // Leaderboard is shown below game
@@ -16,20 +16,13 @@ import UIText from "./components/UIText";
 // Add jsdoc to code
 
 function App() {
-  // BRICKS LAYOUT
   const bricksLayout = new Bricks(3, 9, 37.5, 20, 10, 30, 30);
-  // BALL
-  let ballDX = 2;
-  let ballDY = 2;
-  const ball = new Ball(CANVAS.width / 2, CANVAS.height - 30, 10);
-  // PADDLE
-  const paddleWidth = 75;
-  let paddleX = (CANVAS.width - paddleWidth) / 2;
+  const ball = new Ball(CANVAS.width / 2, CANVAS.height - 30, 2, 2, 10);
+  const paddle = new Paddle((CANVAS.width - 75) / 2, 10, 75);
   // SCORE
   let score = 0;
-  // CONTROLLER
-  let rightPressed = false;
-  let leftPressed = false;
+  // TIME
+  let startTime = new Date();
 
   const draw = (ctx, frameCount) => {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
@@ -37,12 +30,13 @@ function App() {
     drawBall(ctx);
     drawPaddle(ctx);
     drawScore(ctx);
-    collisionDetection();
-    defineBorders();
-    paddleController();
 
-    ball.x += ballDX;
-    ball.y += ballDY;
+    collisionDetection();
+
+    defineBorders();
+    defineLosingCondition();
+
+    updateBallPosition();
   };
 
   const drawBricks = (ctx) => {
@@ -56,8 +50,9 @@ function App() {
   };
 
   const drawPaddle = (ctx) => {
-    const paddle = new Paddle(ctx, paddleX, 10, paddleWidth);
+    paddle.ctx = ctx;
     paddle.draw();
+    paddle.controller();
   };
 
   const drawScore = (ctx) => {
@@ -72,10 +67,13 @@ function App() {
         if(brick.status === 1) {
           if(ball.x > brick.x && ball.x < brick.x + bricksLayout.width
             && ball.y > brick.y && ball.y < brick.y + bricksLayout.height) {
-            ballDY = -ballDY;
+            ball.dy = -ball.dy;
             brick.status = 0;
             score++;
             if(score === bricksLayout.rowCount * bricksLayout.columnCount) {
+              const endTime = new Date();
+              const elapsedTime = endTime - startTime;
+              console.log(elapsedTime);
               alert("YOU WIN, CONGRATS!");
               document.location.reload();
             }
@@ -86,61 +84,32 @@ function App() {
   };
 
   const defineBorders = () => {
-    if (ball.x + ballDX > CANVAS.width - ball.radius
-      || ball.x + ballDX < ball.radius) {
-      ballDX = -ballDX;
-    }
-    if (ball.y + ballDY < ball.radius) {
-      ballDY = -ballDY;
-    }
-    else if (ball.y + ballDY > CANVAS.height - ball.radius) {
-      if(ball.x > paddleX && ball.x < paddleX + paddleWidth) {
-        ballDY = -ballDY;
-      }
-      else {
+    ball.defineBorders();
+  };
+
+  const defineLosingCondition = () => {
+    if (ball.y + ball.dy > CANVAS.height - ball.radius) {
+      if (ball.x > paddle.x && ball.x < paddle.x + paddle.width) {
+        ball.dy = -ball.dy;
+      } else {
         alert("GAME OVER");
         document.location.reload();
 
         ball.x = CANVAS.width / 2;
         ball.y = CANVAS.height - 30;
-        ballDX = 3;
-        ballDY = -3;
-        paddleX = (CANVAS.width - paddleWidth) / 2;
+        ball.dx = 3;
+        ball.dy = -3;
+        paddle.x = (CANVAS.width - paddle.width) / 2;
+        startTime = new Date();
       }
     }
   };
 
-  const paddleController = () => {
-    if (rightPressed && paddleX < CANVAS.width - paddleWidth) {
-      paddleX += 7;
-    }
-    else if (leftPressed && paddleX > 0) {
-      paddleX -= 7;
-    }
+  const updateBallPosition = () => {
+    ball.updatePosition();
   };
 
-  const keyDownHandler = (e) => {
-    if (e.key === "d") {
-      rightPressed = true;
-    }
-    else if (e.key === "a") {
-      leftPressed = true;
-    }
-  };
-
-  const keyUpHandler = (e) => {
-    if (e.key === "d") {
-      rightPressed = false;
-    }
-    else if (e.key === "a") {
-      leftPressed = false;
-    }
-  };
-
-  document.addEventListener("keydown", keyDownHandler, false);
-  document.addEventListener("keyup", keyUpHandler, false);
-
-  return <Canvas draw={draw} />
+  return <Canvas draw={draw} />;
 }
 
 export default App;

@@ -1,8 +1,8 @@
 import { CANVAS } from "../const";
 
 export default class Paddle {
-  constructor(ctx, x, height, width) {
-    this.ctx = ctx;
+  constructor(x, height, width) {
+    this.ctx = null;
     this.x = x;
     this.height = height;
     this.width = width;
@@ -15,4 +15,42 @@ export default class Paddle {
     this.ctx.fill();
     this.ctx.closePath();
   }
+
+  controller() {
+    if (rightPressed && this.#spaceToRight()) {
+      this.x += 7;
+    } else if (leftPressed && this.#spaceToLeft()) {
+      this.x -= 7;
+    }
+  }
+
+  #spaceToRight() {
+    return this.x < CANVAS.width - this.width;
+  }
+
+  #spaceToLeft() {
+    return this.x > 0;
+  }
 }
+
+let rightPressed = false;
+let leftPressed = false;
+
+const keyDownHandler = (e) => {
+  if (e.key === "d") {
+    rightPressed = true;
+  } else if (e.key === "a") {
+    leftPressed = true;
+  }
+};
+
+const keyUpHandler = (e) => {
+  if (e.key === "d") {
+    rightPressed = false;
+  } else if (e.key === "a") {
+    leftPressed = false;
+  }
+};
+
+document.addEventListener("keydown", keyDownHandler, false);
+document.addEventListener("keyup", keyUpHandler, false);
