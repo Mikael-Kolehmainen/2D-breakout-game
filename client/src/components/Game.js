@@ -5,6 +5,7 @@ import Ball from "./Ball";
 import Paddle from "./Paddle";
 import UIText from "./UIText";
 import { CANVAS } from "./../const";
+import { getRandomNumber } from "../helpers/utils";
 
 const Game = (props) => {
   const [gameState, setGameState] = useState("");
@@ -14,7 +15,10 @@ const Game = (props) => {
 
   const setupGame = () => {
     bricksLayout = new Bricks(3, 11, 37.5, 20, 1, 30, 30);
-    ball = new Ball(CANVAS.width / 2, CANVAS.height - 30, 1.5, 1.5, 10);
+
+    const ballX = getRandomNumber(10, CANVAS.width - 10);
+    const ballY = getRandomNumber(10, CANVAS.height - 130);
+    ball = new Ball(ballX, ballY, 1.5, 1.5, 10);
     paddle = new Paddle((CANVAS.width - 75) / 2, 10, 75);
 
     startTime = new Date();

@@ -5,10 +5,8 @@ import Leaderboard from "./components/Leaderboard";
 import "./styles/css/main.css";
 
 // TODO:
-// Add some randomness to ball movement
 // Known bugs
   // The ball and paddle are faster on faster devices
-// Clean the code
 // Add jsdoc to code
 // Write readme in Github
 
