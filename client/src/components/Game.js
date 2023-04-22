@@ -8,6 +8,7 @@ import { CANVAS } from "./../const";
 
 const Game = (props) => {
   const [gameState, setGameState] = useState("");
+  const [startState, setStartState] = useState("START");
 
   let bricksLayout, ball, paddle, isGameRunning, score, startTime;
 
@@ -18,11 +19,11 @@ const Game = (props) => {
 
     startTime = new Date();
     score = 0;
+    setGameState("");
+    setStartState("RESTART");
 
     isGameRunning = true;
   };
-
-  setupGame();
 
   const draw = (ctx, frameCount) => {
     if (isGameRunning) {
@@ -125,7 +126,7 @@ const Game = (props) => {
     <div className="game">
       <p className={gameStateColor}>{gameState}</p>
       <Canvas draw={draw} />
-      <button className="btn center restart-btn" type="button" onClick={restartClicked}>RESTART</button>
+      <button className="btn center restart-btn" type="button" onClick={restartClicked}>{startState}</button>
       <p className="center">Your result: {props.gameTime}s</p>
     </div>
   );
