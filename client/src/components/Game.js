@@ -14,6 +14,7 @@ const Game = () => {
   let score = 0;
   let startTime = new Date();
   const [gameState, setGameState] = useState("");
+  const [gameTime, setGameTime] = useState(null);
   let isGameRunning = true;
 
   const draw = (ctx, frameCount) => {
@@ -70,8 +71,9 @@ const Game = () => {
             score++;
             if(score === bricksLayout.rowCount * bricksLayout.columnCount) {
               const endTime = new Date();
-              const elapsedTime = endTime - startTime;
+              const finalTime = Math.floor((endTime - startTime) / 1000);
 
+              setGameTime(finalTime);
               setGameState("YOU WIN, CONGRATS!");
               isGameRunning = false;
             }
@@ -107,11 +109,18 @@ const Game = () => {
     ball.updatePosition();
   };
 
+  const restartClicked = () => {
+    console.log("restart clicked");
+  };
+
+  const gameStateColor = `game-state ${gameState === "GAME OVER!" ? "red" : "green"}`;
+
   return (
     <div className="game">
-      <p>{gameState}</p>
+      <p className={gameStateColor}>{gameState}</p>
       <Canvas draw={draw} />
-      <button type="button">RESTART</button>
+      <button className="btn center restart-btn" type="button" onClick={restartClicked}>RESTART</button>
+      <p className="center">Your result: {gameTime}s</p>
     </div>
   );
 };

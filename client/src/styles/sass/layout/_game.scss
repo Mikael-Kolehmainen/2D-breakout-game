@@ -1,0 +1,12 @@
+.game-state {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+
+  &.red {
+    color: rgb(255, 98, 98);
+  }
+  &.green {
+    color: rgb(0, 226, 0);
+  }
+}

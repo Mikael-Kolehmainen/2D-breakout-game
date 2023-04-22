@@ -30,10 +30,10 @@ const Leaderboard = () => {
   return (
     <div className="leaderboard">
       <h2>Leaderboard</h2>
-      <h3>Save result to leaderboard</h3>
-      <label htmlFor="username">Username: </label>
+      <h3>Save your result to leaderboard</h3>
+      <label htmlFor="username">Name: </label>
       <input type="text" name="username" maxLength="10" required />
-      <input type="submit" value="Submit" />
+      <input type="submit" value="SUBMIT" className="btn" />
       <table>
         <tbody>
           <tr>
