@@ -71,7 +71,7 @@ const Game = () => {
             if(score === bricksLayout.rowCount * bricksLayout.columnCount) {
               const endTime = new Date();
               const elapsedTime = endTime - startTime;
-              console.log(elapsedTime);
+
               setGameState("YOU WIN, CONGRATS!");
               isGameRunning = false;
             }
@@ -90,8 +90,7 @@ const Game = () => {
       if (ball.x > paddle.x && ball.x < paddle.x + paddle.width) {
         ball.dy = -ball.dy;
       } else {
-        setGameState("GAME OVER");
-        console.log("test");
+        setGameState("GAME OVER!");
         isGameRunning = false;
 
         ball.x = CANVAS.width / 2;
@@ -108,7 +107,13 @@ const Game = () => {
     ball.updatePosition();
   };
 
-  return <Canvas draw={draw} />;
+  return (
+    <div className="game">
+      <p>{gameState}</p>
+      <Canvas draw={draw} />
+      <button type="button">RESTART</button>
+    </div>
+  );
 };
 
 export default Game;

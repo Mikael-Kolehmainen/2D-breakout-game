@@ -16,8 +16,6 @@ import "./styles/css/main.css";
 // Write readme in Github
 
 function App() {
-  console.log("called");
-
   return (
     <div>
       <h1>Breakout Game</h1>
