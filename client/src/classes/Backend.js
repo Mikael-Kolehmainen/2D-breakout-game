@@ -13,6 +13,8 @@ class Backend {
       const response = await axios.post(`${BACKEND_ADDRESS}/save-user-time`, user);
 
       console.info(response);
+
+      return "success";
     } catch (error) {
       console.error(error);
     }

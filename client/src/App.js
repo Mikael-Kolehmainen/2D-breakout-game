@@ -6,10 +6,7 @@ import "./styles/css/main.css";
 
 // TODO:
 // Add some randomness to ball movement
-// Leaderboard
-  // Leaderboard is shown below game
 // Known bugs
-  // The leaderboard form can be submitted without completing the game
   // The ball and paddle are faster on faster devices
 // Clean the code
 // Add jsdoc to code
@@ -20,7 +17,10 @@ function App() {
   const [username, setUsername] = useState("");
 
   const saveUserTime = async () => {
-    await Backend.postUserTime(username, gameTime);
+    if (gameTime != null) {
+      window.location.reload();
+      await Backend.postUserTime(username, gameTime);
+    }
   };
 
   return (

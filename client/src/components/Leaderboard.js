@@ -52,7 +52,7 @@ const Leaderboard = (props) => {
   return (
     <div className="leaderboard">
       <h2>Leaderboard</h2>
-      <h3>Save your result to leaderboard</h3>
+      <h3>Save your result to the leaderboard</h3>
       <label htmlFor="username">Name: </label>
       <input type="text" name="username" maxLength="10" required onChange={(e) => saveUsername(e)} />
       <input type="submit" value="SUBMIT" className="btn" onClick={props.saveUserTime} disabled={disableSubmit} />
@@ -60,7 +60,7 @@ const Leaderboard = (props) => {
         <tbody>
           <tr>
             <td>Placement</td>
-            <td>User</td>
+            <td>Name</td>
             <td>Time (s)</td>
           </tr>
           {userTimesElements}
