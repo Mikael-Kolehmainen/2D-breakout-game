@@ -6,6 +6,7 @@ import "./styles/css/main.css";
 // TODO:
 // Handle Game Over and Win state some other way than by alerting
   // Maybe a restart button?
+// Add some randomness to ball movement
 // Leaderboard
   // Ability to save score with initials
   // Leaderboard is shown below game

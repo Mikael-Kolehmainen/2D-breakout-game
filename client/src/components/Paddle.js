@@ -18,9 +18,9 @@ export default class Paddle {
 
   controller() {
     if (rightPressed && this.#spaceToRight()) {
-      this.x += 7;
+      this.x += 5;
     } else if (leftPressed && this.#spaceToLeft()) {
-      this.x -= 7;
+      this.x -= 5;
     }
   }
 

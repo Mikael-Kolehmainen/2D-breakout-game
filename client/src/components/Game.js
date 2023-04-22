@@ -7,15 +7,23 @@ import UIText from "./UIText";
 import { CANVAS } from "./../const";
 
 const Game = () => {
-  const bricksLayout = new Bricks(3, 9, 37.5, 20, 10, 30, 30);
-  const ball = new Ball(CANVAS.width / 2, CANVAS.height - 30, 2, 2, 10);
-  const paddle = new Paddle((CANVAS.width - 75) / 2, 10, 75);
-
-  let score = 0;
-  let startTime = new Date();
   const [gameState, setGameState] = useState("");
   const [gameTime, setGameTime] = useState(null);
-  let isGameRunning = true;
+
+  let bricksLayout, ball, paddle, isGameRunning, score, startTime;
+
+  const setupGame = () => {
+    bricksLayout = new Bricks(3, 11, 37.5, 20, 1, 30, 30);
+    ball = new Ball(CANVAS.width / 2, CANVAS.height - 30, 1.5, 1.5, 10);
+    paddle = new Paddle((CANVAS.width - 75) / 2, 10, 75);
+
+    startTime = new Date();
+    score = 0;
+
+    isGameRunning = true;
+  };
+
+  setupGame();
 
   const draw = (ctx, frameCount) => {
     if (isGameRunning) {
@@ -94,13 +102,6 @@ const Game = () => {
       } else {
         setGameState("GAME OVER!");
         isGameRunning = false;
-
-        ball.x = CANVAS.width / 2;
-        ball.y = CANVAS.height - 30;
-        ball.dx = 3;
-        ball.dy = -3;
-        paddle.x = (CANVAS.width - paddle.width) / 2;
-        startTime = new Date();
       }
     }
   };
@@ -110,7 +111,7 @@ const Game = () => {
   };
 
   const restartClicked = () => {
-    console.log("restart clicked");
+    setupGame();
   };
 
   const gameStateColor = `game-state ${gameState === "GAME OVER!" ? "red" : "green"}`;
