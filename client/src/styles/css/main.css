@@ -76,3 +76,10 @@ input[type=text] {
     color: #212427;
     background-color: #9fdfff;
     border: 1px solid #9fdfff; }
+  .btn:disabled {
+    opacity: .5; }
+    .btn:disabled:hover {
+      cursor: auto;
+      color: white;
+      background-color: #0095DD;
+      border: 1px solid #0095DD; }

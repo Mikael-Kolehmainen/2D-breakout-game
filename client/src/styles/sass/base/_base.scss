@@ -57,4 +57,14 @@ input[type=text] {
     background-color: $bg-color;
     border: 1px solid $bg-color;
   }
+  &:disabled {
+    opacity: .5;
+
+    &:hover {
+      cursor: auto;
+      color: white;
+      background-color: $primary-color;
+      border: 1px solid $primary-color;
+    }
+  }
 }

@@ -3,7 +3,12 @@
   2. Run records through a loop and print them out
 */
 
+import { useState } from "react";
+
 const Leaderboard = () => {
+  const [username, setUsername] = useState("");
+  const [disableSubmit, setDisableSubmit] = useState(true);
+
   const placeholderData = [
     {
       id: 1,
@@ -27,13 +32,29 @@ const Leaderboard = () => {
     }
   ];
 
+  const saveUsername = (event) => {
+    event.preventDefault();
+    const username = event.target.value;
+
+    if (username !== "") {
+      setUsername(username);
+      setDisableSubmit(false);
+    } else {
+      setDisableSubmit(true);
+    }
+  };
+
+  const submitClicked = () => {
+
+  };
+
   return (
     <div className="leaderboard">
       <h2>Leaderboard</h2>
       <h3>Save your result to leaderboard</h3>
       <label htmlFor="username">Name: </label>
-      <input type="text" name="username" maxLength="10" required />
-      <input type="submit" value="SUBMIT" className="btn" />
+      <input type="text" name="username" maxLength="10" required onChange={(e) => saveUsername(e)} />
+      <input type="submit" value="SUBMIT" className="btn" onClick={submitClicked} disabled={disableSubmit} />
       <table>
         <tbody>
           <tr>
