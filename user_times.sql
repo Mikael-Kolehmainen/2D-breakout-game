@@ -1,0 +1,5 @@
+CREATE TABLE user_times (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(10) NOT NULL,
+  user_time INT NOT NULL
+);

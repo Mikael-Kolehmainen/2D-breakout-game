@@ -2,11 +2,9 @@
   1. Access database and get user records
   2. Run records through a loop and print them out
 */
-
 import { useState } from "react";
 
-const Leaderboard = () => {
-  const [username, setUsername] = useState("");
+const Leaderboard = (props) => {
   const [disableSubmit, setDisableSubmit] = useState(true);
 
   const placeholderData = [
@@ -37,15 +35,11 @@ const Leaderboard = () => {
     const username = event.target.value;
 
     if (username !== "") {
-      setUsername(username);
+      props.setUsername(username);
       setDisableSubmit(false);
     } else {
       setDisableSubmit(true);
     }
-  };
-
-  const submitClicked = () => {
-
   };
 
   return (
@@ -54,7 +48,7 @@ const Leaderboard = () => {
       <h3>Save your result to leaderboard</h3>
       <label htmlFor="username">Name: </label>
       <input type="text" name="username" maxLength="10" required onChange={(e) => saveUsername(e)} />
-      <input type="submit" value="SUBMIT" className="btn" onClick={submitClicked} disabled={disableSubmit} />
+      <input type="submit" value="SUBMIT" className="btn" onClick={props.saveUserTime} disabled={disableSubmit} />
       <table>
         <tbody>
           <tr>

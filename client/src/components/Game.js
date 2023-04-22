@@ -6,9 +6,8 @@ import Paddle from "./Paddle";
 import UIText from "./UIText";
 import { CANVAS } from "./../const";
 
-const Game = () => {
+const Game = (props) => {
   const [gameState, setGameState] = useState("");
-  const [gameTime, setGameTime] = useState(null);
 
   let bricksLayout, ball, paddle, isGameRunning, score, startTime;
 
@@ -81,7 +80,7 @@ const Game = () => {
               const endTime = new Date();
               const finalTime = Math.floor((endTime - startTime) / 1000);
 
-              setGameTime(finalTime);
+              props.setGameTime(finalTime);
               setGameState("YOU WIN, CONGRATS!");
               isGameRunning = false;
             }
@@ -121,7 +120,7 @@ const Game = () => {
       <p className={gameStateColor}>{gameState}</p>
       <Canvas draw={draw} />
       <button className="btn center restart-btn" type="button" onClick={restartClicked}>RESTART</button>
-      <p className="center">Your result: {gameTime}s</p>
+      <p className="center">Your result: {props.gameTime}s</p>
     </div>
   );
 };
