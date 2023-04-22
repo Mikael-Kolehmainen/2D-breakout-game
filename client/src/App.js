@@ -7,7 +7,6 @@ import "./styles/css/main.css";
 // TODO:
 // Add some randomness to ball movement
 // Leaderboard
-  // Ability to save score with initials
   // Leaderboard is shown below game
 // Known bugs
   // The leaderboard form can be submitted without completing the game

@@ -17,6 +17,15 @@ class Backend {
       console.error(error);
     }
   }
+
+  static async selectUserTimes() {
+    try {
+      const response = await axios.get(`${BACKEND_ADDRESS}/get-user-times`);
+      return response.data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
 }
 
 export default Backend;

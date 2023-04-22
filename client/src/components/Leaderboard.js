@@ -1,11 +1,11 @@
-/*
-  1. Access database and get user records
-  2. Run records through a loop and print them out
-*/
 import { useState } from "react";
+import Backend from "../classes/Backend";
 
 const Leaderboard = (props) => {
   const [disableSubmit, setDisableSubmit] = useState(true);
+
+  //const data = await Backend.selectUserTimes();
+  //console.log(data);
 
   const placeholderData = [
     {

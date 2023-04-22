@@ -1,4 +1,4 @@
-const { saveUserTime } = require("./src/saveUserTime");
+const { saveUserTime, getUserTimes } = require("./src/userTimes");
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
@@ -12,6 +12,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post("/save-user-time", async (req, res) => {
   await saveUserTime(req.body.username, req.body.time);
+});
+
+app.get("/get-user-times", async (req, res) => {
+  const userTimes = await getUserTimes();
+  res.send(userTimes);
 });
 
 app.listen(PORT, () => {
