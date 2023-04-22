@@ -4,7 +4,6 @@ import Game from "./components/Game";
 import Leaderboard from "./components/Leaderboard";
 import "./styles/css/main.css";
 
-// TODO:
 // Known bugs
   // The ball and paddle are faster on faster devices
 // Write readme in Github
