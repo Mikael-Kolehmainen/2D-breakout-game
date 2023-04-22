@@ -81,7 +81,7 @@ const Game = (props) => {
               const finalTime = Math.floor((endTime - startTime) / 1000);
 
               props.setGameTime(finalTime);
-              setGameState("YOU WIN, CONGRATS!");
+              setGameState("YOU WIN!");
               isGameRunning = false;
             }
           }
@@ -113,7 +113,13 @@ const Game = (props) => {
     setupGame();
   };
 
-  const gameStateColor = `game-state ${gameState === "GAME OVER!" ? "red" : "green"}`;
+  let gameStateColor = "game-state"
+
+  if (gameState === "GAME OVER!") {
+    gameStateColor += " red";
+  } else if (gameState === "YOU WIN!") {
+    gameStateColor += " green";
+  }
 
   return (
     <div className="game">

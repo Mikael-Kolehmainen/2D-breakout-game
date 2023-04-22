@@ -1,12 +1,18 @@
 .game-state {
   font-size: 24px;
   text-align: center;
-  margin-bottom: 20px;
+  margin: 0 auto 20px auto;
+  font-weight: bold;
+  max-width: fit-content;
+  padding: 5px;
+  border-radius: 5px;
 
   &.red {
     color: rgb(255, 98, 98);
+    background-color: rgb(144, 0, 0);
   }
   &.green {
     color: rgb(0, 226, 0);
+    background-color: rgb(0, 137, 0);
   }
 }

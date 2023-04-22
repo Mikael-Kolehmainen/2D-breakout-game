@@ -20,11 +20,17 @@
 .game-state {
   font-size: 24px;
   text-align: center;
-  margin-bottom: 20px; }
+  margin: 0 auto 20px auto;
+  font-weight: bold;
+  max-width: fit-content;
+  padding: 5px;
+  border-radius: 5px; }
   .game-state.red {
-    color: #ff6262; }
+    color: #ff6262;
+    background-color: #900000; }
   .game-state.green {
-    color: #00e200; }
+    color: #00e200;
+    background-color: #008900; }
 
 * {
   padding: 0;
