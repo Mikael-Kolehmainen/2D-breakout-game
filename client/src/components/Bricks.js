@@ -1,6 +1,16 @@
 import Brick from "./Brick";
 
 export default class Bricks {
+
+  /**
+   * @param {number} rowCount
+   * @param {number} columnCount
+   * @param {number} width
+   * @param {number} height
+   * @param {number} padding
+   * @param {number} offsetLeft
+   * @param {number} offsetTop
+   */
   constructor(rowCount, columnCount, width, height, padding, offsetLeft, offsetTop) {
     this.ctx = null;
     this.rowCount = rowCount;

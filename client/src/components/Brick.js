@@ -1,4 +1,12 @@
 export default class Brick {
+
+  /**
+   * @param {import("./Canvas")} ctx
+   * @param {number} x
+   * @param {number} y
+   * @param {number} width
+   * @param {number} height
+   */
   constructor(ctx, x, y, width, height) {
     this.ctx = ctx;
     this.x = x;
@@ -7,6 +15,16 @@ export default class Brick {
     this.height = height;
   }
 
+  /**
+   * @typedef {object} BrickInfo
+   * @property {number} x
+   * @property {number} y
+   * @property {number} status
+   */
+
+  /**
+   * @returns {BrickInfo}
+   */
   get() {
     return { x: this.x, y: this.y, status: 1 };
   }

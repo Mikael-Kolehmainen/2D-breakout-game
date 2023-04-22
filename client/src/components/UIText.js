@@ -1,4 +1,13 @@
 export default class UIText {
+
+  /**
+   * @param {import("./Canvas")} ctx
+   * @param {string} text
+   * @param {string} font
+   * @param {string} color
+   * @param {number} x
+   * @param {number} y
+   */
   constructor(ctx, text, font, color, x, y) {
     this.ctx = ctx;
     this.text = text;

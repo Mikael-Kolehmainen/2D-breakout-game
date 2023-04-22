@@ -7,7 +7,6 @@ import "./styles/css/main.css";
 // TODO:
 // Known bugs
   // The ball and paddle are faster on faster devices
-// Add jsdoc to code
 // Write readme in Github
 
 function App() {

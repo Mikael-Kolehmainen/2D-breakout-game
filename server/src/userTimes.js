@@ -6,6 +6,10 @@ const {
   FIELD_USER_TIME
 } = require("./const");
 
+/**
+ * @param {string} username
+ * @param {number} time
+ */
 const saveUserTime = async (username, time) => {
   const insertStmt = `INSERT INTO ${TABLE_USER_TIMES} (${FIELD_USERNAME}, ${FIELD_USER_TIME}) VALUES (?, ?)`;
   const values = [username, time];
@@ -18,6 +22,16 @@ const saveUserTime = async (username, time) => {
   }
 };
 
+/**
+ * @typedef {object} UserTime
+ * @property {number} id
+ * @property {string} username
+ * @property {number} user_time
+ */
+
+/**
+ * @returns {UserTime[]}
+ */
 const getUserTimes = async () => {
   return new Promise((resolve, reject) => {
     const query = db.query(`SELECT * FROM ${TABLE_USER_TIMES}`);
