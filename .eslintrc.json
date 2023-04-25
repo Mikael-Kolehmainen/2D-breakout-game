@@ -1,0 +1,41 @@
+{
+  "env": {
+    "node": true,
+    "commonjs": true,
+    "es2021": true
+  },
+  "plugins": [
+    "jsdoc"
+  ],
+  "extends": ["airbnb-base", "plugin:jsdoc/recommended"],
+  "overrides": [
+  ],
+  "ignorePatterns":["node_modules/"],
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+  "settings": {"jsdoc": {"mode": "typescript"}},
+  "rules": {
+    "prefer-const": "warn",
+    "linebreak-style": "off",
+    "comma-dangle": "off",
+    "quote-props": ["off", "always"],
+    "max-len": "off",
+    "no-use-before-define": "off",
+    "arrow-body-style": "off",
+    "no-console": "off",
+    "quotes": ["warn", "double"],
+    "object-shorthand": "off",
+    "prefer-destructuring": "off",
+    "prefer-template": "off",
+    "no-plusplus": "off",
+    "strict": "off",
+    "no-return-await": "off",
+    "eqeqeq": "off",
+    "func-names": "off",
+    "jsdoc/require-param-description": "off",
+    "jsdoc/require-returns-description": "off",
+    "jsdoc/require-property-description": "off",
+    "jsdoc/no-undefined-types": "off"
+  }
+}

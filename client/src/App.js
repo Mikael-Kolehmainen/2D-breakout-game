@@ -6,7 +6,6 @@ import "./styles/css/main.css";
 
 // Known bugs
   // The ball and paddle are faster on faster devices
-// Write readme in Github
 
 function App() {
   const [gameTime, setGameTime] = useState(null);
