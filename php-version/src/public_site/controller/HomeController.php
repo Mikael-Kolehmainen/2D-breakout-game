@@ -25,9 +25,17 @@ class HomeController
           <canvas id='gameCanvas' width='480' height='320'></canvas>
           <button class='btn center restart-btn' type='button' id='restart-btn'>START</button>
           <p class='center' id='game-result'>Your result: </p>
-        </div>";
+        </div>
+        <div class='leaderboard'>
+          <h2>Leaderboard</h2>
+          <h3>Save your result to the leaderboard</h3>
+          <label for='username'>Name: </label>
+          <input type='text' name='username' maxlength='10' required id='username-input' />
+          <input type='submit' value='SUBMIT' class='btn' id='save-result-btn' disabled />
+        ";
         $this->showLeaderboard();
     echo "
+        </div>
       </div>
     ";
   }
@@ -35,20 +43,13 @@ class HomeController
   private function showLeaderboard(): void
   {
     echo "
-      <div class='leaderboard'>
-        <h2>Leaderboard</h2>
-        <h3>Save your result to the leaderboard</h3>
-        <label for='username'>Name: </label>
-        <input type='text' name='username' max='10' required id='username-input' />
-        <input type='submit' value='SUBMIT' class='btn' id='save-result-btn' disabled />
-        <table>
-            <tr>
-              <td>Placement</td>
-              <td>Name</td>
-              <td>Time (s)</td>
-            </tr>
-        </table>
-      </div>
+      <table>
+          <tr>
+            <td>Placement</td>
+            <td>Name</td>
+            <td>Time (s)</td>
+          </tr>
+      </table>
     ";
   }
 }

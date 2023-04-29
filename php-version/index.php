@@ -4,7 +4,6 @@ use public_site\controller\ErrorController;
 use public_site\controller\HomeController;
 use public_site\controller\LeaderboardController;
 use api\manager\ServerRequestManager;
-use public_site\controller\LeaderboardController;
 
 require __DIR__ . "/src/inc/bootstrap.php";
 
