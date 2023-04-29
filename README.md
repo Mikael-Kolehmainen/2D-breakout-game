@@ -5,6 +5,7 @@
   The game is started by pressing a button and can be restarted as many times as wanted
   with the button. The ball spawn position is randomized which makes the game nonrepetitive.
   There's a timer and the results can be saved after winning by inputting a name and pressing submit.
+  <br>I created two versions of this project one with JavaScript (node.js & React) and one with PHP.
 </p>
 <h2>Project Languages</h2>
 <ul style='font-size 16px;'>
