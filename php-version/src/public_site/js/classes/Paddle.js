@@ -1,6 +1,4 @@
-import { CANVAS } from "../const";
-
-export default class Paddle {
+class Paddle {
 
   /**
    * @param {number} x
