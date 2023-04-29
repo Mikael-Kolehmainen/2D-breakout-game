@@ -9,6 +9,7 @@
 </p>
 <h2>Project Languages</h2>
 <ul style='font-size 16px;'>
+  <li>PHP 8.2.0</li>
   <li>JavaScript ES6</li>
   <li>Sass 8.0.0</li>
 </ul>
