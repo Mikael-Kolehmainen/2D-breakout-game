@@ -1,7 +1,7 @@
-const { saveUserTime, getUserTimes } = require("./src/userTimes");
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const { saveUserTime, getUserTimes } = require("./src/userTimes");
 
 const PORT = 3001;
 

@@ -1,0 +1,92 @@
+@font-face {
+  font-family: montserrat;
+  src: url(../../font/Montserrat-Regular.ttf); }
+
+.leaderboard {
+  padding-top: 25px;
+  text-align: center; }
+  .leaderboard table {
+    margin: 35px auto 50px auto;
+    max-width: 600px;
+    border-spacing: 0; }
+    .leaderboard table tr:first-child {
+      background-color: #9fdfff; }
+    .leaderboard table tr td {
+      border: 1px solid #212427;
+      padding: 5px 0 5px 0;
+      margin: 0;
+      width: 200px; }
+
+.game-state {
+  font-size: 24px;
+  height: 29px;
+  text-align: center;
+  margin: 0 auto 20px auto;
+  font-weight: bold;
+  max-width: fit-content;
+  padding: 5px;
+  border-radius: 5px; }
+  .game-state.red {
+    color: #ff6262;
+    background-color: #900000; }
+  .game-state.green {
+    color: #00e200;
+    background-color: #008900; }
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: montserrat;
+  color: #212427; }
+
+.center {
+  max-width: 200px;
+  margin: 20px auto 0 auto;
+  text-align: center; }
+
+/* CANVAS */
+canvas {
+  background: #eee;
+  display: block;
+  margin: 0 auto; }
+
+/* TEXT ELEMENTS */
+h1, h3 {
+  text-align: center; }
+
+h1, h2 {
+  color: white;
+  background-color: #0095DD;
+  padding: 10px 0 10px 0;
+  margin-bottom: 20px; }
+
+h3 {
+  margin-bottom: 10px; }
+
+input[type=text] {
+  margin: 0 5px 0 5px; }
+
+/* BUTTONS */
+.btn {
+  color: white;
+  background-color: #0095DD;
+  border: 1px solid #0095DD;
+  margin-left: 5px;
+  padding: 3px;
+  border-radius: 5px; }
+  .btn.center {
+    display: block;
+    max-width: 100px;
+    margin: 20px auto 0 auto; }
+  .btn:hover {
+    cursor: pointer;
+    color: #212427;
+    background-color: #9fdfff;
+    border: 1px solid #9fdfff; }
+  .btn:disabled {
+    opacity: .5; }
+    .btn:disabled:hover {
+      cursor: auto;
+      color: white;
+      background-color: #0095DD;
+      border: 1px solid #0095DD; }

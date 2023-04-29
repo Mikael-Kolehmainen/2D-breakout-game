@@ -1,0 +1,23 @@
+.leaderboard {
+  padding-top: 25px;
+  text-align: center;
+
+  table {
+    margin: 35px auto 50px auto;
+    max-width: 600px;
+    border-spacing: 0;
+
+    tr {
+
+      &:first-child {
+        background-color: $bg-color;
+      }
+      td {
+        border: 1px solid $dark-font-color;
+        padding: 5px 0 5px 0;
+        margin: 0;
+        width: 200px;
+      }
+    }
+  }
+}

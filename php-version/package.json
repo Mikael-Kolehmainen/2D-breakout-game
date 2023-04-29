@@ -1,0 +1,13 @@
+{
+  "name": "php-version",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.php",
+  "scripts": {
+    "sass": "node-sass -w src/public_site/styles/sass/ -o src/public_site/styles/css/ --recursive"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "node-sass": "^8.0.0"
+  }
+}
