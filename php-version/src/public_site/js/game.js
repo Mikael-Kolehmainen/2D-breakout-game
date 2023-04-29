@@ -2,6 +2,7 @@ const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 const restartBtn = document.getElementById("restart-btn");
 const gameStateElement = document.getElementById("game-state");
+const gameResultElement = document.getElementById("game-result");
 let bricksLayout, ball, paddle, isGameRunning, score, startTime, finalTime;
 
 const setupGame = () => {
@@ -78,6 +79,7 @@ const collisionDetection = () => {
             const endTime = new Date();
             finalTime = Math.floor((endTime - startTime) / 1000);
 
+            gameResultElement.innerText = `Your result: ${finalTime}s`;
             gameStateElement.innerText = "YOU WIN!";
             gameStateElement.setAttribute("class", "game-state green");
             isGameRunning = false;
@@ -114,4 +116,4 @@ const restartClicked = () => {
 
 restartBtn.addEventListener("click", restartClicked);
 
-setInterval(draw, 5);
+setInterval(draw, 6);

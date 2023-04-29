@@ -2,7 +2,9 @@
 
 use public_site\controller\ErrorController;
 use public_site\controller\HomeController;
+use public_site\controller\LeaderboardController;
 use api\manager\ServerRequestManager;
+use public_site\controller\LeaderboardController;
 
 require __DIR__ . "/src/inc/bootstrap.php";
 
@@ -24,6 +26,19 @@ if ($uri[2] != "ajax") {
 switch ($uri[2]) {
   case "":
     showHome();
+    break;
+  case "ajax":
+    if (ServerRequestManager::isPost() || ServerRequestManager::isGet()) {
+      header('Content-type: Application/json, charset=UTF-8');
+      switch ($uri[3]) {
+        case "save-game-results":
+          saveGameResultsToLeaderboard();
+          break;
+        case null: default:
+          header("HTTP/1.1 404 Not Found");
+          exit();
+      }
+    }
     break;
   case "error":
     showError("Error title", "This is the error page.", "/index.php");
@@ -48,6 +63,12 @@ function showHome()
 {
   $homeController = new HomeController();
   $homeController->showHomePage();
+}
+
+function saveGameResultsToLeaderboard()
+{
+  $leaderboardController = new LeaderboardController();
+  $leaderboardController->saveResults();
 }
 
 function showError($title, $message, $link): void
