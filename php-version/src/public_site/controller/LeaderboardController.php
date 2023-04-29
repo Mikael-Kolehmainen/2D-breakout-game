@@ -8,14 +8,6 @@ use api\manager\ServerRequestManager;
 
 class LeaderboardController
 {
-  /** @var int */
-  public $id;
-
-  /** @var string */
-  public $username;
-
-  /** @var int */
-  public $user_time;
 
   /** @var Database */
   private $db;
@@ -30,8 +22,22 @@ class LeaderboardController
     if (ServerRequestManager::issetUsername() && ServerRequestManager::issetUserTime()) {
       $leaderboardModel = new LeaderboardModel($this->db);
       $leaderboardModel->username = ServerRequestManager::postUsername();
-      $leaderboardModel->user_time = ServerRequestManager::postUserTime();
+      $leaderboardModel->userTime = ServerRequestManager::postUserTime();
       $leaderboardModel->save();
     }
+  }
+
+  public function getTopTenSortedResults(): array
+  {
+    $leaderboardModel = new LeaderboardModel($this->db);
+    $results = $leaderboardModel->loadAll();
+
+    usort($results, function($a, $b) {
+      return $a->userTime - $b->userTime;
+    });
+
+    array_splice($results, 10);
+
+    return $results;
   }
 }

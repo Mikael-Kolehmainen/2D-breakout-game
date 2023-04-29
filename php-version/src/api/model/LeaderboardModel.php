@@ -16,7 +16,7 @@ class LeaderboardModel
   public $username;
 
   /** @var int */
-  public $user_time;
+  public $userTime;
 
   /** @var Database */
   private $db;
@@ -38,9 +38,39 @@ class LeaderboardModel
         ['ss'],
         [
           $this->username,
-          $this->user_time
+          $this->userTime
         ]
       ]
     );
+  }
+
+  /** @return LeaderboardModel[] */
+  public function loadAll()
+  {
+    $records = $this->db->select('SELECT * FROM ' . self::TABLE_NAME);
+
+    $leaderboardResults = [];
+    $i = 0;
+    foreach ($records as $record) {
+      $leaderboardModel = new LeaderboardModel($this->db);
+      $leaderboardResults[$i] = $leaderboardModel->mapFromDbRecord($record);
+
+      $i++;
+    }
+
+    return $leaderboardResults;
+  }
+
+  /**
+     * @param mixed[] $record Associative array of one db record
+     * @return $this
+     */
+  public function mapFromDbRecord($record)
+  {
+    $this->id = $record[self::FIELD_ID];
+    $this->username = $record[self::FIELD_USERNAME];
+    $this->userTime = $record[self::FIELD_USER_TIME];
+
+    return $this;
   }
 }

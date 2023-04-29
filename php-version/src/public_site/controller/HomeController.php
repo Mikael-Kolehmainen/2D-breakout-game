@@ -42,13 +42,31 @@ class HomeController
 
   private function showLeaderboard(): void
   {
+    $leaderboardController = new LeaderboardController();
+
+    $results = $leaderboardController->getTopTenSortedResults();
+
     echo "
       <table>
           <tr>
             <td>Placement</td>
             <td>Name</td>
             <td>Time (s)</td>
-          </tr>
+          </tr>";
+
+    $i = 1;
+    foreach ($results as $result) {
+      echo "
+        <tr>
+          <td>$i</td>
+          <td>$result->username</td>
+          <td>$result->userTime</td>
+        </tr>
+      ";
+      $i++;
+    }
+
+    echo "
       </table>
     ";
   }
